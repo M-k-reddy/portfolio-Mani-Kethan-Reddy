@@ -5,6 +5,8 @@ import ProjectModal from './ProjectModal';
 export default function Projects3D() {
   const [selectedProject, setSelectedProject] = useState(null);
 
+  const mainRepoUrl = 'https://github.com/M-k-reddy/portfolio-Mani-Kethan-Reddy';
+
   const projects = [
     {
       id: 'algosolveo',
@@ -20,9 +22,9 @@ export default function Projects3D() {
         '3 Tutoring Styles: Socratic Hints, Debugging, Optimal Code',
         'Chrome Side Panel API & Contextual DOM Parsing'
       ],
-      githubUrl: 'https://github.com/M-k-reddy/AlgoSolveo',
-      github: 'https://github.com/M-k-reddy/AlgoSolveo',
-      liveUrl: 'https://github.com/M-k-reddy/AlgoSolveo'
+      githubUrl: mainRepoUrl,
+      github: mainRepoUrl,
+      liveUrl: mainRepoUrl
     },
     {
       id: 'birds-ai',
@@ -38,9 +40,9 @@ export default function Projects3D() {
         'ONNX Runtime Inference for High FPS Response',
         'Wikipedia API Integration for Taxonomy & Info'
       ],
-      githubUrl: 'https://github.com/M-k-reddy/Birds-Species-Detection',
-      github: 'https://github.com/M-k-reddy/Birds-Species-Detection',
-      liveUrl: 'https://github.com/M-k-reddy/Birds-Species-Detection'
+      githubUrl: mainRepoUrl,
+      github: mainRepoUrl,
+      liveUrl: mainRepoUrl
     },
     {
       id: 'rag-summarizer',
@@ -56,9 +58,9 @@ export default function Projects3D() {
         'FAISS Vector Embedding Database for Semantic Context',
         'Local Ollama LLM Integration for Zero Data Privacy Leakage'
       ],
-      githubUrl: 'https://github.com/M-k-reddy/RAG-Summarization',
-      github: 'https://github.com/M-k-reddy/RAG-Summarization',
-      liveUrl: 'https://github.com/M-k-reddy/RAG-Summarization'
+      githubUrl: mainRepoUrl,
+      github: mainRepoUrl,
+      liveUrl: mainRepoUrl
     },
     {
       id: 'college-chatbot',
@@ -74,9 +76,9 @@ export default function Projects3D() {
         'Dynamic College Query Dataset & Fast Inference',
         'Google API & Prompt Engineering Strategy'
       ],
-      githubUrl: 'https://github.com/M-k-reddy/College-ChatBot',
-      github: 'https://github.com/M-k-reddy/College-ChatBot',
-      liveUrl: 'https://github.com/M-k-reddy/College-ChatBot'
+      githubUrl: mainRepoUrl,
+      github: mainRepoUrl,
+      liveUrl: mainRepoUrl
     }
   ];
 
