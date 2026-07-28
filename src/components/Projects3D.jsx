@@ -21,6 +21,7 @@ export default function Projects3D() {
         'Chrome Side Panel API & Contextual DOM Parsing'
       ],
       githubUrl: 'https://github.com/M-k-reddy/AlgoSolveo',
+      github: 'https://github.com/M-k-reddy/AlgoSolveo',
       liveUrl: 'https://github.com/M-k-reddy/AlgoSolveo'
     },
     {
@@ -38,6 +39,7 @@ export default function Projects3D() {
         'Wikipedia API Integration for Taxonomy & Info'
       ],
       githubUrl: 'https://github.com/M-k-reddy/Birds-Species-Detection',
+      github: 'https://github.com/M-k-reddy/Birds-Species-Detection',
       liveUrl: 'https://github.com/M-k-reddy/Birds-Species-Detection'
     },
     {
@@ -55,6 +57,7 @@ export default function Projects3D() {
         'Local Ollama LLM Integration for Zero Data Privacy Leakage'
       ],
       githubUrl: 'https://github.com/M-k-reddy/RAG-Summarization',
+      github: 'https://github.com/M-k-reddy/RAG-Summarization',
       liveUrl: 'https://github.com/M-k-reddy/RAG-Summarization'
     },
     {
@@ -72,6 +75,7 @@ export default function Projects3D() {
         'Google API & Prompt Engineering Strategy'
       ],
       githubUrl: 'https://github.com/M-k-reddy/College-ChatBot',
+      github: 'https://github.com/M-k-reddy/College-ChatBot',
       liveUrl: 'https://github.com/M-k-reddy/College-ChatBot'
     }
   ];
@@ -148,9 +152,28 @@ export default function Projects3D() {
                 
                 <div style={{ display: 'flex', alignItems: 'flex-start', justifyContent: 'space-between', marginBottom: '12px' }}>
                   <h3 style={{ fontSize: '1.2rem', fontWeight: 800, lineHeight: 1.3 }}>{project.title}</h3>
-                  <div style={{ color: 'var(--accent-primary)', opacity: 0.8 }}>
+                  <a
+                    href={project.githubUrl}
+                    target="_blank"
+                    rel="noreferrer"
+                    style={{
+                      color: 'var(--accent-primary)',
+                      padding: '6px',
+                      borderRadius: '50%',
+                      background: 'rgba(6, 182, 212, 0.1)',
+                      border: '1px solid var(--accent-glow)',
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                      transition: 'transform 0.2s ease, background 0.2s ease'
+                    }}
+                    onClick={(e) => e.stopPropagation()}
+                    title="View GitHub Repository"
+                    onMouseEnter={(e) => (e.currentTarget.style.transform = 'scale(1.15)')}
+                    onMouseLeave={(e) => (e.currentTarget.style.transform = 'scale(1)')}
+                  >
                     <ExternalLink size={18} />
-                  </div>
+                  </a>
                 </div>
 
                 <p style={{ fontSize: '0.88rem', color: 'var(--text-muted)', lineHeight: 1.6, marginBottom: '20px', flex: 1 }}>

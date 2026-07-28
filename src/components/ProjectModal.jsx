@@ -1,8 +1,13 @@
 import React from 'react';
-import { X, Github, CheckCircle2 } from 'lucide-react';
+import { X, Github, CheckCircle2, ExternalLink } from 'lucide-react';
 
 export default function ProjectModal({ project, onClose }) {
   if (!project) return null;
+
+  const githubLink = project.githubUrl || project.github || '#';
+  const descriptionText = project.fullDesc || project.fullDescription || project.desc;
+  const featureList = project.highlights || project.features || [];
+  const categoryText = project.categoryTag || project.categoryLabel || project.category;
 
   return (
     <div
@@ -72,14 +77,14 @@ export default function ProjectModal({ project, onClose }) {
         <div style={{ display: 'flex', flexWrap: 'wrap', alignItems: 'center', justifyContent: 'space-between', gap: '16px', marginBottom: '16px' }}>
           <div>
             <span className="section-tag" style={{ marginBottom: '8px' }}>
-              {project.categoryLabel}
+              {categoryText}
             </span>
             <h2 style={{ fontSize: '1.8rem', fontWeight: 800 }}>{project.title}</h2>
           </div>
 
           <div>
             <a
-              href={project.github}
+              href={githubLink}
               target="_blank"
               rel="noreferrer"
               className="btn-primary"
@@ -91,36 +96,38 @@ export default function ProjectModal({ project, onClose }) {
         </div>
 
         <p style={{ fontSize: '1.05rem', color: 'var(--text-muted)', lineHeight: 1.6, marginBottom: '28px' }}>
-          {project.fullDescription}
+          {descriptionText}
         </p>
 
         {/* Key Features */}
-        <div style={{ marginBottom: '28px' }}>
-          <h3 style={{ fontSize: '1.15rem', fontWeight: 700, marginBottom: '14px', display: 'flex', alignItems: 'center', gap: '8px' }}>
-            <CheckCircle2 size={18} color="var(--accent-primary)" /> Technical Architecture & Innovations
-          </h3>
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))', gap: '12px' }}>
-            {project.features.map((feat, idx) => (
-              <div
-                key={idx}
-                style={{
-                  padding: '14px',
-                  background: 'rgba(0, 0, 0, 0.25)',
-                  borderRadius: 'var(--radius-sm)',
-                  border: '1px solid var(--border-glass)',
-                  fontSize: '0.88rem',
-                  color: 'var(--text-main)',
-                  display: 'flex',
-                  alignItems: 'flex-start',
-                  gap: '10px'
-                }}
-              >
-                <div style={{ width: '6px', height: '6px', borderRadius: '50%', background: 'var(--accent-primary)', marginTop: '6px', flexShrink: 0 }} />
-                <span>{feat}</span>
-              </div>
-            ))}
+        {featureList.length > 0 && (
+          <div style={{ marginBottom: '28px' }}>
+            <h3 style={{ fontSize: '1.15rem', fontWeight: 700, marginBottom: '14px', display: 'flex', alignItems: 'center', gap: '8px' }}>
+              <CheckCircle2 size={18} color="var(--accent-primary)" /> Technical Architecture & Innovations
+            </h3>
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))', gap: '12px' }}>
+              {featureList.map((feat, idx) => (
+                <div
+                  key={idx}
+                  style={{
+                    padding: '14px',
+                    background: 'rgba(0, 0, 0, 0.25)',
+                    borderRadius: 'var(--radius-sm)',
+                    border: '1px solid var(--border-glass)',
+                    fontSize: '0.88rem',
+                    color: 'var(--text-main)',
+                    display: 'flex',
+                    alignItems: 'flex-start',
+                    gap: '10px'
+                  }}
+                >
+                  <div style={{ width: '6px', height: '6px', borderRadius: '50%', background: 'var(--accent-primary)', marginTop: '6px', flexShrink: 0 }} />
+                  <span>{feat}</span>
+                </div>
+              ))}
+            </div>
           </div>
-        </div>
+        )}
 
         {/* Tech Stack Badges */}
         <div>
