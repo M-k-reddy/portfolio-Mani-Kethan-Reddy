@@ -5,8 +5,6 @@ import ProjectModal from './ProjectModal';
 export default function Projects3D() {
   const [selectedProject, setSelectedProject] = useState(null);
 
-  const mainRepoUrl = 'https://github.com/M-k-reddy/portfolio-Mani-Kethan-Reddy';
-
   const projects = [
     {
       id: 'algosolveo',
@@ -22,9 +20,9 @@ export default function Projects3D() {
         '3 Tutoring Styles: Socratic Hints, Debugging, Optimal Code',
         'Chrome Side Panel API & Contextual DOM Parsing'
       ],
-      githubUrl: mainRepoUrl,
-      github: mainRepoUrl,
-      liveUrl: mainRepoUrl
+      githubUrl: 'https://github.com/M-k-reddy/AlgoSolveo',
+      github: 'https://github.com/M-k-reddy/AlgoSolveo',
+      liveUrl: 'https://github.com/M-k-reddy/AlgoSolveo'
     },
     {
       id: 'birds-ai',
@@ -40,9 +38,9 @@ export default function Projects3D() {
         'ONNX Runtime Inference for High FPS Response',
         'Wikipedia API Integration for Taxonomy & Info'
       ],
-      githubUrl: mainRepoUrl,
-      github: mainRepoUrl,
-      liveUrl: mainRepoUrl
+      githubUrl: 'https://github.com/M-k-reddy/Birds-Species-Detection',
+      github: 'https://github.com/M-k-reddy/Birds-Species-Detection',
+      liveUrl: 'https://github.com/M-k-reddy/Birds-Species-Detection'
     },
     {
       id: 'rag-summarizer',
@@ -58,9 +56,9 @@ export default function Projects3D() {
         'FAISS Vector Embedding Database for Semantic Context',
         'Local Ollama LLM Integration for Zero Data Privacy Leakage'
       ],
-      githubUrl: mainRepoUrl,
-      github: mainRepoUrl,
-      liveUrl: mainRepoUrl
+      githubUrl: 'https://github.com/M-k-reddy/AI-based-Content-Summarization-Using-RAG',
+      github: 'https://github.com/M-k-reddy/AI-based-Content-Summarization-Using-RAG',
+      liveUrl: 'https://github.com/M-k-reddy/AI-based-Content-Summarization-Using-RAG'
     },
     {
       id: 'college-chatbot',
@@ -76,9 +74,9 @@ export default function Projects3D() {
         'Dynamic College Query Dataset & Fast Inference',
         'Google API & Prompt Engineering Strategy'
       ],
-      githubUrl: mainRepoUrl,
-      github: mainRepoUrl,
-      liveUrl: mainRepoUrl
+      githubUrl: 'https://github.com/M-k-reddy/college-chatbot',
+      github: 'https://github.com/M-k-reddy/college-chatbot',
+      liveUrl: 'https://github.com/M-k-reddy/college-chatbot'
     }
   ];
 
