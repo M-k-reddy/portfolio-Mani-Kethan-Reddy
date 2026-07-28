@@ -4,6 +4,10 @@ import { motion, AnimatePresence } from 'framer-motion';
 export default function Preloader({ onComplete }) {
   const [isLoading, setIsLoading] = useState(true);
 
+  const getAssetPath = (filename) => {
+    return import.meta.env.BASE_URL + filename;
+  };
+
   useEffect(() => {
     const timer = setTimeout(() => {
       setIsLoading(false);
@@ -48,8 +52,8 @@ export default function Preloader({ onComplete }) {
               boxShadow: '0 0 40px rgba(6,182,212,0.8)'
             }}>
               <img
-                src="/profile-anime.png"
-                alt="Mani Kethan Reddy AI Avatar"
+                src={getAssetPath('profile.jpg')}
+                alt="Mani Kethan Reddy Challa"
                 style={{ width: '100%', height: '100%', objectFit: 'cover' }}
               />
             </div>

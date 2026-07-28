@@ -6,7 +6,6 @@ export default function Hero3D() {
   const mountRef = useRef(null);
   const [activeRoleIndex, setActiveRoleIndex] = useState(0);
   const [isSpeaking, setIsSpeaking] = useState(false);
-  const [useAnimeAvatar, setUseAnimeAvatar] = useState(true);
   const [currentSpeechTopic, setCurrentSpeechTopic] = useState('intro');
 
   const roles = [
@@ -30,7 +29,7 @@ export default function Hero3D() {
     return () => clearInterval(roleInterval);
   }, []);
 
-  // Web Speech API Voice Synthesis for Speaking AI Avatar
+  // Web Speech API Voice Synthesis
   const speakText = (topicKey) => {
     if ('speechSynthesis' in window) {
       window.speechSynthesis.cancel();
@@ -345,7 +344,7 @@ export default function Hero3D() {
         
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: '50px', alignItems: 'center' }}>
           
-          {/* Left Column: Interactive Speaking AI Avatar Unit */}
+          {/* Left Column: Official Profile Photo Frame */}
           <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
             <div style={{ position: 'relative', width: '290px', height: '290px', marginBottom: '20px' }}>
               
@@ -357,13 +356,13 @@ export default function Hero3D() {
                 right: '-10px',
                 bottom: '-10px',
                 borderRadius: '50%',
-                background: 'linear-gradient(135deg, #06b6d4, #a855f7, #ff2a85, #10b981)',
+                background: 'linear-gradient(135deg, #06b6d4, #a855f7, #10b981)',
                 boxShadow: '0 0 40px rgba(6, 182, 212, 0.6)',
-                animation: isSpeaking ? 'pulseVoice 0.6s ease-in-out infinite alternate, spin 6s linear infinite' : 'spin 10s linear infinite',
+                animation: 'spin 10s linear infinite',
                 opacity: 0.9
               }} />
 
-              {/* Profile Image Circle */}
+              {/* Profile Image Circle - Real Photo */}
               <div style={{
                 position: 'relative',
                 width: '100%',
@@ -374,7 +373,7 @@ export default function Hero3D() {
                 background: 'var(--bg-glass-card)'
               }}>
                 <img
-                  src={getAssetPath(useAnimeAvatar ? 'profile-anime.png' : 'profile.jpg')}
+                  src={getAssetPath('profile.jpg')}
                   alt="Mani Kethan Reddy Challa"
                   style={{
                     width: '100%',
@@ -407,9 +406,8 @@ export default function Hero3D() {
                 )}
               </div>
 
-              {/* Toggle Avatar Mode Button */}
-              <button
-                onClick={() => setUseAnimeAvatar(!useAnimeAvatar)}
+              {/* Status Badge */}
+              <div
                 className="glass-card"
                 style={{
                   position: 'absolute',
@@ -420,22 +418,21 @@ export default function Hero3D() {
                   borderRadius: 'var(--radius-full)',
                   fontSize: '0.78rem',
                   fontFamily: 'var(--font-mono)',
-                  color: useAnimeAvatar ? '#ff2a85' : '#10b981',
+                  color: '#10b981',
                   whiteSpace: 'nowrap',
                   boxShadow: '0 10px 25px rgba(0,0,0,0.6)',
-                  border: useAnimeAvatar ? '1px solid rgba(255, 42, 133, 0.4)' : '1px solid rgba(16, 185, 129, 0.4)',
+                  border: '1px solid rgba(16, 185, 129, 0.4)',
                   display: 'flex',
                   alignItems: 'center',
-                  gap: '6px',
-                  cursor: 'pointer'
+                  gap: '6px'
                 }}
               >
-                <UserCheck size={14} /> {useAnimeAvatar ? 'Anime AI Avatar Mode' : 'Real Photo Mode'}
-              </button>
+                <Sparkles size={14} /> Open to AI/ML Roles
+              </div>
 
             </div>
 
-            {/* AI Avatar Voice Controls */}
+            {/* AI Voice Controls */}
             <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '10px', width: '100%', maxWidth: '300px', marginTop: '10px' }}>
               <button
                 onClick={() => speakText('intro')}
@@ -444,12 +441,11 @@ export default function Hero3D() {
                   width: '100%',
                   justifyContent: 'center',
                   padding: '10px 18px',
-                  fontSize: '0.88rem',
-                  background: isSpeaking ? 'linear-gradient(135deg, #ff2a85, #a855f7)' : 'var(--accent-gradient)'
+                  fontSize: '0.88rem'
                 }}
               >
                 {isSpeaking ? <Pause size={16} /> : <Volume2 size={16} />}
-                <span>{isSpeaking ? 'Stop Voice Greeting' : '🔊 Hear AI Voice Greeting'}</span>
+                <span>{isSpeaking ? 'Stop Voice Greeting' : '🔊 Hear Audio Greeting'}</span>
               </button>
             </div>
 
