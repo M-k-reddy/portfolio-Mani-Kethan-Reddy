@@ -1,6 +1,10 @@
 import React, { useState } from 'react';
 import { ExternalLink, Github, Code, Sparkles, Layers, Terminal } from 'lucide-react';
 import ProjectModal from './ProjectModal';
+import algosolveoImg from '../../public/assets/algosolveo.png';
+import birdsAiImg from '../../public/assets/birds-ai.png';
+import ragSummarizerImg from '../../public/assets/rag-summarizer.png';
+import collegeChatbotImg from '../../public/assets/college-chatbot.png';
 
 export default function Projects3D() {
   const [selectedProject, setSelectedProject] = useState(null);
@@ -13,7 +17,7 @@ export default function Projects3D() {
       categoryTag: 'Chrome Extension & AI',
       desc: 'AI-powered Chrome side panel extension providing interactive, guided tutoring for LeetCode & DSA problems across 315 problems and 49 patterns.',
       fullDesc: 'AlgoSolveo is a sophisticated Chrome side panel extension built to provide real-time, step-by-step DSA guidance. It features 3 tutoring modes (Socratic Hinting, Code Debugger, Optimal Solution), 315 curated problems across 49 patterns, and intelligent progress tracking.',
-      image: './assets/algosolveo.png',
+      image: algosolveoImg,
       tags: ['JavaScript', 'Chrome Extension APIs', 'AI Tutoring', 'DSA Roadmap'],
       highlights: [
         '315 Curated DSA Problems across 49 Core Patterns',
@@ -31,7 +35,7 @@ export default function Projects3D() {
       categoryTag: 'AI & Computer Vision',
       desc: 'AI-powered bird species classification web app featuring a two-stage classification pipeline across 525 classes with real-time Wikipedia API info lookup.',
       fullDesc: 'High-accuracy computer vision system that classifies bird species across 525 distinct classes using PyTorch and ONNX Runtime inference. Features a non-bird filter stage and Wikipedia REST API integration for live taxonomy & habitat information.',
-      image: './assets/birds-ai.png',
+      image: birdsAiImg,
       tags: ['Python', 'PyTorch', 'React.js', 'Flask', 'ONNX Runtime'],
       highlights: [
         '525 Bird Classes + Non-Bird Filtering Stage',
@@ -49,7 +53,7 @@ export default function Projects3D() {
       categoryTag: 'RAG & Published Research',
       desc: 'Published in IJERT Journal. AI document summarization system using Retrieval-Augmented Generation, Ollama LLM, and FAISS vector retrieval.',
       fullDesc: 'Official published research project (IJERT Vol 15, Issue 06). Combines vector embeddings with FAISS vector database and local Ollama LLMs to analyze long-form documents and generate accurate semantic summaries without hallucination.',
-      image: './assets/rag-summarizer.png',
+      image: ragSummarizerImg,
       tags: ['Python', 'RAG', 'Ollama LLM', 'FAISS', 'Flask'],
       highlights: [
         'Published in IJERT International Research Journal',
@@ -67,7 +71,7 @@ export default function Projects3D() {
       categoryTag: 'NLP & Google API',
       desc: 'Developed at MLRIT Hackathon using Flask, Google API, and prompt engineering to assist students with dynamic college query resolution.',
       fullDesc: 'Interactive query resolution bot built during the MLRIT Hackathon using Flask and Google API. Handles student queries regarding college schedules, syllabus, campus notices, and academic info.',
-      image: './assets/college-chatbot.png',
+      image: collegeChatbotImg,
       tags: ['Python', 'Flask', 'Google API', 'HTML/CSS', 'Prompt Engineering'],
       highlights: [
         'MLRIT Hackathon Award-Winning Prototype',

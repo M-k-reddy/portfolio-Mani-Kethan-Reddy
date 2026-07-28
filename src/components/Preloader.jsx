@@ -1,12 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import profileImg from '../../public/profile.jpg';
 
 export default function Preloader({ onComplete }) {
   const [isLoading, setIsLoading] = useState(true);
-
-  const getAssetPath = (filename) => {
-    return import.meta.env.BASE_URL + filename;
-  };
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -52,7 +49,7 @@ export default function Preloader({ onComplete }) {
               boxShadow: '0 0 40px rgba(6,182,212,0.8)'
             }}>
               <img
-                src={getAssetPath('profile.jpg')}
+                src={profileImg}
                 alt="Mani Kethan Reddy Challa"
                 style={{ width: '100%', height: '100%', objectFit: 'cover' }}
               />

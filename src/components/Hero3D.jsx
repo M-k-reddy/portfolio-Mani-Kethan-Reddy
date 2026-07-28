@@ -1,6 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import * as THREE from 'three';
 import { ArrowRight, Code, Brain, Mail, Sparkles, FileText } from 'lucide-react';
+import profileImg from '../../public/profile.jpg';
 
 export default function Hero3D() {
   const mountRef = useRef(null);
@@ -349,7 +350,7 @@ export default function Hero3D() {
                 background: 'var(--bg-glass-card)'
               }}>
                 <img
-                  src={getAssetPath('profile.jpg')}
+                  src={profileImg}
                   alt="Mani Kethan Reddy Challa"
                   style={{
                     width: '100%',
