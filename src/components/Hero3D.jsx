@@ -1,12 +1,10 @@
 import React, { useEffect, useRef, useState } from 'react';
 import * as THREE from 'three';
-import { ArrowRight, Code, Brain, Mail, Sparkles, Volume2, VolumeX, Pause, Mic, UserCheck } from 'lucide-react';
+import { ArrowRight, Code, Brain, Mail, Sparkles, FileText } from 'lucide-react';
 
 export default function Hero3D() {
   const mountRef = useRef(null);
   const [activeRoleIndex, setActiveRoleIndex] = useState(0);
-  const [isSpeaking, setIsSpeaking] = useState(false);
-  const [currentSpeechTopic, setCurrentSpeechTopic] = useState('intro');
 
   const roles = [
     "Computer Science (AI & ML) Engineer",
@@ -15,11 +13,8 @@ export default function Hero3D() {
     "Machine Learning & PyTorch Specialist"
   ];
 
-  const speechScripts = {
-    intro: "Hi! Welcome to my 3D portfolio. I'm Mani Kethan Reddy Challa, a Computer Science graduate specializing in AI, Machine Learning, and RAG architectures. Explore my projects, IJERT research publication, and Salesforce certification below!",
-    rag: "My research on AI-based Content Summarization using Retrieval Augmented Generation was published in the IJERT Journal. It combines FAISS vector search with local Ollama LLMs for intelligent context retrieval.",
-    drdo: "During my internship at DRDO Research Centre Imarat in Hyderabad, I worked on defense cable assembly, quality assurance, electrical testing, and validation processes.",
-    algosolveo: "AlgoSolveo is my LeetCode Tutor Chrome extension structuring 315 Data Structures and Algorithms problems across 49 patterns with three interactive tutoring styles."
+  const getAssetPath = (filename) => {
+    return import.meta.env.BASE_URL + filename;
   };
 
   useEffect(() => {
@@ -28,42 +23,6 @@ export default function Hero3D() {
     }, 3000);
     return () => clearInterval(roleInterval);
   }, []);
-
-  // Web Speech API Voice Synthesis
-  const speakText = (topicKey) => {
-    if ('speechSynthesis' in window) {
-      window.speechSynthesis.cancel();
-
-      if (isSpeaking && currentSpeechTopic === topicKey) {
-        setIsSpeaking(false);
-        return;
-      }
-
-      const textToSpeak = speechScripts[topicKey] || speechScripts.intro;
-      const utterance = new SpeechSynthesisUtterance(textToSpeak);
-      utterance.rate = 1.0;
-      utterance.pitch = 1.05;
-
-      const voices = window.speechSynthesis.getVoices();
-      const preferredVoice = voices.find(v => v.lang.includes('en') && (v.name.includes('Google') || v.name.includes('Natural') || v.name.includes('David') || v.name.includes('Zira')));
-      if (preferredVoice) utterance.voice = preferredVoice;
-
-      utterance.onstart = () => {
-        setIsSpeaking(true);
-        setCurrentSpeechTopic(topicKey);
-      };
-
-      utterance.onend = () => {
-        setIsSpeaking(false);
-      };
-
-      utterance.onerror = () => {
-        setIsSpeaking(false);
-      };
-
-      window.speechSynthesis.speak(utterance);
-    }
-  };
 
   // Three.js 3D Disperse & Compress Physics Canvas
   useEffect(() => {
@@ -319,10 +278,6 @@ export default function Hero3D() {
     };
   }, []);
 
-  const getAssetPath = (filename) => {
-    return import.meta.env.BASE_URL + filename;
-  };
-
   return (
     <section id="hero" style={{ position: 'relative', minHeight: '100vh', display: 'flex', alignItems: 'center', paddingTop: '100px', paddingBottom: '60px', overflow: 'hidden' }}>
       
@@ -342,27 +297,28 @@ export default function Hero3D() {
 
       <div className="container" style={{ position: 'relative', zIndex: 10 }}>
         
+        {/* CodeBucks Signature 2-Column Hero Layout */}
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: '50px', alignItems: 'center' }}>
           
-          {/* Left Column: Official Profile Photo Frame */}
-          <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-            <div style={{ position: 'relative', width: '290px', height: '290px', marginBottom: '20px' }}>
+          {/* Left Column: CodeBucks Signature Profile Image Frame */}
+          <div style={{ display: 'flex', justifyContent: 'center' }}>
+            <div style={{ position: 'relative', width: '280px', height: '280px' }}>
               
-              {/* Spinning Cyberpunk Neon Ring */}
+              {/* Spinning/Glowing Cyber Border Ring */}
               <div style={{
                 position: 'absolute',
-                top: '-10px',
-                left: '-10px',
-                right: '-10px',
-                bottom: '-10px',
+                top: '-8px',
+                left: '-8px',
+                right: '-8px',
+                bottom: '-8px',
                 borderRadius: '50%',
-                background: 'linear-gradient(135deg, #06b6d4, #a855f7, #10b981)',
-                boxShadow: '0 0 40px rgba(6, 182, 212, 0.6)',
-                animation: 'spin 10s linear infinite',
-                opacity: 0.9
+                background: 'linear-gradient(135deg, var(--accent-primary), #a855f7, #10b981)',
+                boxShadow: '0 0 35px var(--accent-glow)',
+                animation: 'spin 12s linear infinite',
+                opacity: 0.85
               }} />
 
-              {/* Profile Image Circle - Real Photo */}
+              {/* Profile Image Circle */}
               <div style={{
                 position: 'relative',
                 width: '100%',
@@ -382,36 +338,14 @@ export default function Hero3D() {
                     display: 'block'
                   }}
                 />
-
-                {/* Speech Equalizer Overlay */}
-                {isSpeaking && (
-                  <div style={{
-                    position: 'absolute',
-                    bottom: '16px',
-                    left: '50%',
-                    transform: 'translateX(-50%)',
-                    display: 'flex',
-                    alignItems: 'center',
-                    gap: '4px',
-                    padding: '6px 14px',
-                    background: 'rgba(0,0,0,0.75)',
-                    borderRadius: 'var(--radius-full)',
-                    backdropFilter: 'blur(8px)'
-                  }}>
-                    <div style={{ width: '3px', height: '16px', background: '#06b6d4', animation: 'barWave 0.4s ease-in-out infinite alternate' }} />
-                    <div style={{ width: '3px', height: '24px', background: '#a855f7', animation: 'barWave 0.5s ease-in-out 0.1s infinite alternate' }} />
-                    <div style={{ width: '3px', height: '14px', background: '#ff2a85', animation: 'barWave 0.3s ease-in-out 0.2s infinite alternate' }} />
-                    <div style={{ width: '3px', height: '20px', background: '#10b981', animation: 'barWave 0.45s ease-in-out 0.15s infinite alternate' }} />
-                  </div>
-                )}
               </div>
 
-              {/* Status Badge */}
+              {/* Floating Badge Tag */}
               <div
                 className="glass-card"
                 style={{
                   position: 'absolute',
-                  bottom: '-12px',
+                  bottom: '-10px',
                   left: '50%',
                   transform: 'translateX(-50%)',
                   padding: '6px 16px',
@@ -421,7 +355,7 @@ export default function Hero3D() {
                   color: '#10b981',
                   whiteSpace: 'nowrap',
                   boxShadow: '0 10px 25px rgba(0,0,0,0.6)',
-                  border: '1px solid rgba(16, 185, 129, 0.4)',
+                  border: '1px solid rgba(16,185,129,0.4)',
                   display: 'flex',
                   alignItems: 'center',
                   gap: '6px'
@@ -431,27 +365,9 @@ export default function Hero3D() {
               </div>
 
             </div>
-
-            {/* AI Voice Controls */}
-            <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '10px', width: '100%', maxWidth: '300px', marginTop: '10px' }}>
-              <button
-                onClick={() => speakText('intro')}
-                className="btn-primary"
-                style={{
-                  width: '100%',
-                  justifyContent: 'center',
-                  padding: '10px 18px',
-                  fontSize: '0.88rem'
-                }}
-              >
-                {isSpeaking ? <Pause size={16} /> : <Volume2 size={16} />}
-                <span>{isSpeaking ? 'Stop Voice Greeting' : '🔊 Hear Audio Greeting'}</span>
-              </button>
-            </div>
-
           </div>
 
-          {/* Right Column: High-Impact Headlines & Actions */}
+          {/* Right Column: CodeBucks Signature Headlines & Call to Actions */}
           <div>
             
             <div className="section-tag" style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', marginBottom: '16px' }}>
@@ -494,7 +410,7 @@ export default function Hero3D() {
                 className="btn-primary"
                 style={{ padding: '12px 26px', fontSize: '0.95rem' }}
               >
-                Resume 📄
+                Resume <FileText size={18} />
               </a>
               <a
                 href="#contact"
@@ -534,7 +450,7 @@ export default function Hero3D() {
 
       </div>
 
-      {/* Rotating "HIRE ME" Badge in Corner */}
+      {/* CodeBucks Signature Rotating "HIRE ME" Badge in Corner */}
       <div style={{
         position: 'fixed',
         bottom: '24px',
@@ -581,16 +497,6 @@ export default function Hero3D() {
         @keyframes spin {
           from { transform: rotate(0deg); }
           to { transform: rotate(360deg); }
-        }
-
-        @keyframes pulseVoice {
-          from { transform: scale(1); }
-          to { transform: scale(1.06); }
-        }
-
-        @keyframes barWave {
-          from { height: 6px; }
-          to { height: 26px; }
         }
       `}</style>
     </section>
