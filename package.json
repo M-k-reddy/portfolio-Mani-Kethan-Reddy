@@ -1,0 +1,27 @@
+{
+  "name": "portfolio-mani-kethan-reddy",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "homepage": "https://M-k-reddy.github.io/portfolio-Mani-Kethan-Reddy",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d dist"
+  },
+  "dependencies": {
+    "lucide-react": "^0.380.0",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "three": "^0.165.0"
+  },
+  "devDependencies": {
+    "@types/react": "^18.3.3",
+    "@types/react-dom": "^18.3.0",
+    "@vitejs/plugin-react": "^4.3.0",
+    "gh-pages": "^6.3.0",
+    "vite": "^5.2.11"
+  }
+}
