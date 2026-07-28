@@ -32,7 +32,7 @@ export default function Hero3D() {
     container.innerHTML = '';
 
     const scene = new THREE.Scene();
-    scene.fog = new THREE.FogExp2(0x090d16, 0.015);
+    scene.fog = new THREE.FogExp2(0x090d16, 0.018);
 
     const camera = new THREE.PerspectiveCamera(
       60,
@@ -124,8 +124,8 @@ export default function Hero3D() {
     gridHelper.material.transparent = true;
     mainGroup.add(gridHelper);
 
-    // 3. 3D DISPERSE & COMPRESS PARTICLE SYSTEM
-    const particleCount = 1200;
+    // 3. VIBRANT GLOWING CIRCULAR ORBS PARTICLE SYSTEM
+    const particleCount = 750;
     const particlesGeometry = new THREE.BufferGeometry();
     const positions = new Float32Array(particleCount * 3);
     const origPositions = new Float32Array(particleCount * 3);
@@ -133,9 +133,9 @@ export default function Hero3D() {
 
     for (let i = 0; i < particleCount; i++) {
       const idx = i * 3;
-      const x = (Math.random() - 0.5) * 24;
-      const y = (Math.random() - 0.5) * 20;
-      const z = (Math.random() - 0.5) * 16;
+      const x = (Math.random() - 0.5) * 22;
+      const y = (Math.random() - 0.5) * 18;
+      const z = (Math.random() - 0.5) * 12 - 2;
 
       positions[idx] = x;
       positions[idx + 1] = y;
@@ -152,12 +152,28 @@ export default function Hero3D() {
 
     particlesGeometry.setAttribute('position', new THREE.BufferAttribute(positions, 3));
 
+    // High-resolution soft radial glow canvas texture
+    const canvas = document.createElement('canvas');
+    canvas.width = 128;
+    canvas.height = 128;
+    const ctx = canvas.getContext('2d');
+    const gradient = ctx.createRadialGradient(64, 64, 0, 64, 64, 64);
+    gradient.addColorStop(0, 'rgba(56, 189, 248, 1)');
+    gradient.addColorStop(0.35, 'rgba(6, 182, 212, 0.75)');
+    gradient.addColorStop(0.7, 'rgba(168, 85, 247, 0.3)');
+    gradient.addColorStop(1, 'rgba(0, 0, 0, 0)');
+    ctx.fillStyle = gradient;
+    ctx.fillRect(0, 0, 128, 128);
+    const particleTexture = new THREE.CanvasTexture(canvas);
+
     const particlesMaterial = new THREE.PointsMaterial({
-      size: 0.09,
-      color: 0x38bdf8,
+      size: 0.28,
+      map: particleTexture,
       transparent: true,
-      opacity: 0.88,
-      blending: THREE.AdditiveBlending
+      opacity: 0.9,
+      blending: THREE.AdditiveBlending,
+      depthWrite: false,
+      sizeAttenuation: true
     });
 
     const particleSystem = new THREE.Points(particlesGeometry, particlesMaterial);
@@ -187,10 +203,10 @@ export default function Hero3D() {
 
     window.addEventListener('resize', handleResize);
 
-    const repulsionRadius = 4.2;
-    const repulsionForce = 0.55;
-    const springReturnForce = 0.08;
-    const damping = 0.84;
+    const repulsionRadius = 3.8;
+    const repulsionForce = 0.45;
+    const springReturnForce = 0.06;
+    const damping = 0.86;
 
     let animationFrameId;
     const clock = new THREE.Clock();
@@ -212,6 +228,10 @@ export default function Hero3D() {
         const oy = origPositions[idx + 1];
         const oz = origPositions[idx + 2];
 
+        // Gentle floating drift
+        const ambientWaveX = Math.sin(elapsedTime * 0.9 + i * 0.5) * 0.003;
+        const ambientWaveY = Math.cos(elapsedTime * 0.8 + i * 0.5) * 0.003;
+
         const dx = px - cursor3D.x;
         const dy = py - cursor3D.y;
         const dz = pz - cursor3D.z;
@@ -228,8 +248,8 @@ export default function Hero3D() {
         const ry = oy - py;
         const rz = oz - pz;
 
-        velocities[idx] += rx * springReturnForce;
-        velocities[idx + 1] += ry * springReturnForce;
+        velocities[idx] += rx * springReturnForce + ambientWaveX;
+        velocities[idx + 1] += ry * springReturnForce + ambientWaveY;
         velocities[idx + 2] += rz * springReturnForce;
 
         velocities[idx] *= damping;

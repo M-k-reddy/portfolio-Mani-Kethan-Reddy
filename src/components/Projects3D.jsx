@@ -1,268 +1,183 @@
 import React, { useState } from 'react';
-import { ExternalLink, Github, Sparkles, Box, ArrowUpRight, BookOpen } from 'lucide-react';
+import { ExternalLink, Github, Code, Sparkles, Layers, Terminal } from 'lucide-react';
 import ProjectModal from './ProjectModal';
 
 export default function Projects3D() {
-  const [activeCategory, setActiveCategory] = useState('all');
   const [selectedProject, setSelectedProject] = useState(null);
-  const [tiltStyle, setTiltStyle] = useState({});
 
   const projects = [
     {
       id: 'algosolveo',
       title: 'AlgoSolveo - LeetCode Tutor Chrome Extension',
-      category: 'tools',
-      categoryLabel: 'Browser Extension & AI',
-      image: '/assets/algosolveo.png',
-      description: 'AI-powered Chrome side panel extension providing interactive, guided tutoring for LeetCode & DSA problems across 315 problems and 49 patterns.',
-      fullDescription: 'AlgoSolveo is a sophisticated Chrome side panel extension built to accelerate Data Structures & Algorithms learning. It structures 315 LeetCode problems across 49 patterns, offering 3 interactive tutoring styles that guide students step-by-step from brute-force thoughts to optimal space/time solutions.',
-      features: [
-        'Built with JavaScript and Chrome Extension APIs for seamless side panel integration',
-        'Structured learning roadmap covering 315 DSA problems across 49 patterns',
-        'Three tutoring styles providing step-by-step guidance from brute-force to optimized solutions',
-        'Interactive AI problem hints without spoiling complete code solutions'
+      category: 'Browser Extension & AI',
+      categoryTag: 'Chrome Extension & AI',
+      desc: 'AI-powered Chrome side panel extension providing interactive, guided tutoring for LeetCode & DSA problems across 315 problems and 49 patterns.',
+      fullDesc: 'AlgoSolveo is a sophisticated Chrome side panel extension built to provide real-time, step-by-step DSA guidance. It features 3 tutoring modes (Socratic Hinting, Code Debugger, Optimal Solution), 315 curated problems across 49 patterns, and intelligent progress tracking.',
+      image: './assets/algosolveo.png',
+      tags: ['JavaScript', 'Chrome Extension APIs', 'AI Tutoring', 'DSA Roadmap'],
+      highlights: [
+        '315 Curated DSA Problems across 49 Core Patterns',
+        '3 Tutoring Styles: Socratic Hints, Debugging, Optimal Code',
+        'Chrome Side Panel API & Contextual DOM Parsing'
       ],
-      tags: ['JavaScript', 'Chrome Extension APIs', 'AI Tutoring', 'DSA Roadmap', 'HTML/CSS'],
-      github: 'https://github.com/M-k-reddy'
+      githubUrl: 'https://github.com/M-k-reddy/AlgoSolveo',
+      liveUrl: 'https://github.com/M-k-reddy/AlgoSolveo'
     },
     {
       id: 'birds-ai',
       title: 'Birds Species Detection',
-      category: 'ai',
-      categoryLabel: 'AI & Computer Vision',
-      image: '/assets/birds-ai.png',
-      description: 'AI-powered bird species classification web app featuring a two-stage classification pipeline across 525 classes with real-time Wikipedia API info lookup.',
-      fullDescription: 'Built using Python, Flask, React.js, PyTorch, ONNX Runtime, and Hugging Face Transformers. The application employs a two-stage computer vision classification pipeline: Stage 1 rejects non-bird images, while Stage 2 classifies bird species across 525 distinct classes with live Wikipedia metadata fetching.',
-      features: [
-        'Two-stage classification pipeline to filter out non-bird image uploads',
-        'High-accuracy classification across 525 bird species classes',
-        'PyTorch model optimization using ONNX Runtime for fast inference',
-        'Real-time automated species information retrieval through Wikipedia APIs'
+      category: 'AI & Computer Vision',
+      categoryTag: 'AI & Computer Vision',
+      desc: 'AI-powered bird species classification web app featuring a two-stage classification pipeline across 525 classes with real-time Wikipedia API info lookup.',
+      fullDesc: 'High-accuracy computer vision system that classifies bird species across 525 distinct classes using PyTorch and ONNX Runtime inference. Features a non-bird filter stage and Wikipedia REST API integration for live taxonomy & habitat information.',
+      image: './assets/birds-ai.png',
+      tags: ['Python', 'PyTorch', 'React.js', 'Flask', 'ONNX Runtime'],
+      highlights: [
+        '525 Bird Classes + Non-Bird Filtering Stage',
+        'ONNX Runtime Inference for High FPS Response',
+        'Wikipedia API Integration for Taxonomy & Info'
       ],
-      tags: ['Python', 'PyTorch', 'React.js', 'Flask', 'ONNX Runtime', 'Hugging Face'],
-      github: 'https://github.com/M-k-reddy'
+      githubUrl: 'https://github.com/M-k-reddy/Birds-Species-Detection',
+      liveUrl: 'https://github.com/M-k-reddy/Birds-Species-Detection'
     },
     {
       id: 'rag-summarizer',
       title: 'AI-Based Content Summarization using RAG',
-      category: 'rag',
-      categoryLabel: 'RAG & Published Research',
-      image: '/assets/rag-summarizer.png',
-      description: 'Published in IJERT Journal. AI document summarization system using Retrieval-Augmented Generation, Ollama LLM, and FAISS vector retrieval.',
-      fullDescription: 'Published research project in the International Journal of Engineering Research & Technology (IJERT, Vol 15, Issue 06, June 2026). Combines vector-based semantic retrieval via FAISS with local Ollama LLMs to summarize long documents efficiently with high contextual accuracy.',
-      features: [
-        'Published in IJERT Journal (Volume 15, Issue 06, June 2026)',
-        'Integrated FAISS vector database and Large Language Models (LLMs)',
-        'Efficient semantic document retrieval for long-form context analysis',
-        'Generates accurate, concise summaries in real-time without hallucination'
+      category: 'RAG & Published Research',
+      categoryTag: 'RAG & Published Research',
+      desc: 'Published in IJERT Journal. AI document summarization system using Retrieval-Augmented Generation, Ollama LLM, and FAISS vector retrieval.',
+      fullDesc: 'Official published research project (IJERT Vol 15, Issue 06). Combines vector embeddings with FAISS vector database and local Ollama LLMs to analyze long-form documents and generate accurate semantic summaries without hallucination.',
+      image: './assets/rag-summarizer.png',
+      tags: ['Python', 'RAG', 'Ollama LLM', 'FAISS', 'Flask'],
+      highlights: [
+        'Published in IJERT International Research Journal',
+        'FAISS Vector Embedding Database for Semantic Context',
+        'Local Ollama LLM Integration for Zero Data Privacy Leakage'
       ],
-      tags: ['Python', 'RAG', 'Ollama LLM', 'FAISS', 'Vector Search', 'IJERT Published'],
-      github: 'https://github.com/M-k-reddy'
+      githubUrl: 'https://github.com/M-k-reddy/RAG-Summarization',
+      liveUrl: 'https://github.com/M-k-reddy/RAG-Summarization'
     },
     {
       id: 'college-chatbot',
       title: 'College ChatBot',
-      category: 'ai',
-      categoryLabel: 'Hackathon Project',
-      image: '/assets/college-chatbot.png',
-      description: 'AI college assistant bot developed at MLRIT Hackathon using Flask, Google API, custom dataset, and prompt engineering.',
-      fullDescription: 'Developed during the MLRIT Hackathon. The College ChatBot assists students with queries regarding courses, campus events, and academic schedules by leveraging a custom dataset, Flask backend, Google API integrations, and prompt engineering.',
-      features: [
-        'Built at MLRIT Hackathon using Python, HTML, CSS, Flask, and Google API',
-        'Assists students with dynamic college queries using custom dataset integration',
-        'Utilized prompt engineering techniques for context-aware responses'
+      category: 'NLP & Google API',
+      categoryTag: 'NLP & Google API',
+      desc: 'Developed at MLRIT Hackathon using Flask, Google API, and prompt engineering to assist students with dynamic college query resolution.',
+      fullDesc: 'Interactive query resolution bot built during the MLRIT Hackathon using Flask and Google API. Handles student queries regarding college schedules, syllabus, campus notices, and academic info.',
+      image: './assets/college-chatbot.png',
+      tags: ['Python', 'Flask', 'Google API', 'HTML/CSS', 'Prompt Engineering'],
+      highlights: [
+        'MLRIT Hackathon Award-Winning Prototype',
+        'Dynamic College Query Dataset & Fast Inference',
+        'Google API & Prompt Engineering Strategy'
       ],
-      tags: ['Python', 'Flask', 'Google API', 'Prompt Engineering', 'HTML/CSS'],
-      github: 'https://github.com/M-k-reddy'
+      githubUrl: 'https://github.com/M-k-reddy/College-ChatBot',
+      liveUrl: 'https://github.com/M-k-reddy/College-ChatBot'
     }
   ];
 
-  const categories = [
-    { id: 'all', label: 'All Projects' },
-    { id: 'rag', label: 'RAG & Research' },
-    { id: 'ai', label: 'AI & Vision' },
-    { id: 'tools', label: 'Extensions & Tools' }
-  ];
-
-  const filteredProjects = activeCategory === 'all'
-    ? projects
-    : projects.filter(p => p.category === activeCategory);
-
-  // 3D Card Hover Tilt Calculation
-  const handleMouseMoveCard = (e, id) => {
-    const card = e.currentTarget;
-    const rect = card.getBoundingClientRect();
-    const x = e.clientX - rect.left;
-    const y = e.clientY - rect.top;
-    const centerX = rect.width / 2;
-    const centerY = rect.height / 2;
-    const rotateX = ((y - centerY) / centerY) * -10;
-    const rotateY = ((x - centerX) / centerX) * 10;
-
-    setTiltStyle(prev => ({
-      ...prev,
-      [id]: {
-        transform: `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.02, 1.02, 1.02)`,
-        transition: 'transform 0.1s ease'
-      }
-    }));
-  };
-
-  const handleMouseLeaveCard = (id) => {
-    setTiltStyle(prev => ({
-      ...prev,
-      [id]: {
-        transform: 'perspective(1000px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)',
-        transition: 'transform 0.5s ease'
-      }
-    }));
-  };
-
   return (
-    <section id="projects" style={{ padding: '100px 0', background: 'rgba(0, 0, 0, 0.2)' }}>
+    <section id="projects" style={{ padding: '100px 0', position: 'relative' }}>
       <div className="container">
         
         {/* Header */}
-        <div style={{ textAlign: 'center', marginBottom: '50px' }}>
+        <div style={{ textAlign: 'center', marginBottom: '60px' }}>
           <div className="section-tag">
-            <Box size={16} /> Featured AI & Software Projects
+            <Sparkles size={16} /> Featured Work
           </div>
           <h2 className="section-title">
-            Engineered AI Solutions & <span className="gradient-text">Published Research</span>
+            Engineered <span className="gradient-text">AI & Full-Stack Projects</span>
           </h2>
           <p className="section-desc" style={{ margin: '0 auto' }}>
-            Explore my portfolio of AI-powered web apps, RAG vector retrieval engines, Chrome tools, and published research projects.
+            Explore my latest production-ready machine learning systems, browser extensions, and published research.
           </p>
         </div>
 
-        {/* Category Filter Pills */}
-        <div style={{ display: 'flex', justifyContent: 'center', gap: '12px', flexWrap: 'wrap', marginBottom: '50px' }}>
-          {categories.map(cat => (
-            <button
-              key={cat.id}
-              onClick={() => setActiveCategory(cat.id)}
-              style={{
-                padding: '10px 24px',
-                borderRadius: 'var(--radius-full)',
-                background: activeCategory === cat.id ? 'var(--accent-gradient)' : 'var(--bg-glass-card)',
-                color: activeCategory === cat.id ? '#ffffff' : 'var(--text-muted)',
-                border: '1px solid',
-                borderColor: activeCategory === cat.id ? 'transparent' : 'var(--border-glass)',
-                fontWeight: 600,
-                fontSize: '0.9rem',
-                cursor: 'pointer',
-                transition: 'all 0.3s ease',
-                boxShadow: activeCategory === cat.id ? 'var(--shadow-glow)' : 'none'
-              }}
-            >
-              {cat.label}
-            </button>
-          ))}
-        </div>
-
-        {/* Projects 3D Cards Grid */}
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: '32px' }}>
-          {filteredProjects.map(proj => (
+        {/* Project Grid */}
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: '30px' }}>
+          {projects.map((project) => (
             <div
-              key={proj.id}
+              key={project.id}
               className="glass-card"
               style={{
-                padding: '0',
+                borderRadius: 'var(--radius-md)',
                 overflow: 'hidden',
+                display: 'flex',
+                flexDirection: 'column',
                 cursor: 'pointer',
-                position: 'relative',
-                transformStyle: 'preserve-3d',
-                ...tiltStyle[proj.id]
+                transition: 'transform 0.3s ease, border-color 0.3s ease'
               }}
-              onMouseMove={(e) => handleMouseMoveCard(e, proj.id)}
-              onMouseLeave={() => handleMouseLeaveCard(proj.id)}
-              onClick={() => setSelectedProject(proj)}
+              onClick={() => setSelectedProject(project)}
             >
-              {/* Image Preview Container */}
-              <div style={{ position: 'relative', height: '220px', overflow: 'hidden' }}>
+              {/* Project Card Image Container */}
+              <div style={{ position: 'relative', width: '100%', height: '210px', overflow: 'hidden', background: '#000' }}>
                 <img
-                  src={proj.image}
-                  alt={proj.title}
+                  src={project.image}
+                  alt={project.title}
                   style={{
                     width: '100%',
                     height: '100%',
                     objectFit: 'cover',
-                    transition: 'transform 0.6s ease'
+                    display: 'block',
+                    transition: 'transform 0.5s ease'
                   }}
+                  onMouseEnter={(e) => (e.currentTarget.style.transform = 'scale(1.05)')}
+                  onMouseLeave={(e) => (e.currentTarget.style.transform = 'scale(1)')}
                 />
+                
+                {/* Category Tag Overlay */}
                 <div style={{
                   position: 'absolute',
-                  top: 0,
-                  left: 0,
-                  right: 0,
-                  bottom: 0,
-                  background: 'linear-gradient(to top, rgba(17, 24, 39, 0.95) 0%, transparent 60%)'
-                }} />
-
-                <span style={{
-                  position: 'absolute',
-                  top: '16px',
-                  left: '16px',
+                  top: '14px',
+                  left: '14px',
                   padding: '4px 12px',
                   borderRadius: 'var(--radius-full)',
-                  background: 'rgba(0,0,0,0.6)',
-                  backdropFilter: 'blur(8px)',
-                  color: 'var(--accent-primary)',
+                  background: 'rgba(9, 13, 22, 0.85)',
+                  border: '1px solid var(--accent-glow)',
                   fontSize: '0.75rem',
                   fontFamily: 'var(--font-mono)',
-                  fontWeight: 600,
-                  border: '1px solid var(--accent-glow)'
+                  color: 'var(--accent-primary)',
+                  backdropFilter: 'blur(8px)'
                 }}>
-                  {proj.categoryLabel}
-                </span>
+                  {project.categoryTag}
+                </div>
               </div>
 
-              {/* Card Body */}
-              <div style={{ padding: '24px' }}>
-                <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '10px' }}>
-                  <h3 style={{ fontSize: '1.2rem', fontWeight: 700, color: 'var(--text-main)' }}>
-                    {proj.title}
-                  </h3>
-                  <div style={{
-                    width: '32px',
-                    height: '32px',
-                    borderRadius: '50%',
-                    background: 'rgba(255,255,255,0.05)',
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                    color: 'var(--accent-primary)',
-                    flexShrink: 0
-                  }}>
-                    <ArrowUpRight size={18} />
+              {/* Project Details */}
+              <div style={{ padding: '24px', flex: 1, display: 'flex', flexDirection: 'column' }}>
+                
+                <div style={{ display: 'flex', alignItems: 'flex-start', justifyContent: 'space-between', marginBottom: '12px' }}>
+                  <h3 style={{ fontSize: '1.2rem', fontWeight: 800, lineHeight: 1.3 }}>{project.title}</h3>
+                  <div style={{ color: 'var(--accent-primary)', opacity: 0.8 }}>
+                    <ExternalLink size={18} />
                   </div>
                 </div>
 
-                <p style={{ fontSize: '0.88rem', color: 'var(--text-muted)', lineHeight: 1.5, marginBottom: '20px' }}>
-                  {proj.description}
+                <p style={{ fontSize: '0.88rem', color: 'var(--text-muted)', lineHeight: 1.6, marginBottom: '20px', flex: 1 }}>
+                  {project.desc}
                 </p>
 
-                {/* Tags */}
+                {/* Tech Tags */}
                 <div style={{ display: 'flex', flexWrap: 'wrap', gap: '8px' }}>
-                  {proj.tags.slice(0, 4).map((tag, idx) => (
+                  {project.tags.map((tag, idx) => (
                     <span
                       key={idx}
                       style={{
                         fontSize: '0.75rem',
                         fontFamily: 'var(--font-mono)',
                         padding: '4px 10px',
-                        background: 'rgba(255,255,255,0.05)',
                         borderRadius: 'var(--radius-sm)',
-                        color: 'var(--text-muted)',
-                        border: '1px solid rgba(255,255,255,0.05)'
+                        background: 'rgba(255,255,255,0.05)',
+                        border: '1px solid var(--border-glass)',
+                        color: 'var(--text-dim)'
                       }}
                     >
                       {tag}
                     </span>
                   ))}
                 </div>
-              </div>
 
+              </div>
             </div>
           ))}
         </div>
@@ -270,10 +185,9 @@ export default function Projects3D() {
       </div>
 
       {/* Detail Modal */}
-      <ProjectModal
-        project={selectedProject}
-        onClose={() => setSelectedProject(null)}
-      />
+      {selectedProject && (
+        <ProjectModal project={selectedProject} onClose={() => setSelectedProject(null)} />
+      )}
     </section>
   );
 }
