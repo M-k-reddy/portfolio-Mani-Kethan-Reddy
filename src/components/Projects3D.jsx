@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 import { ExternalLink, Github, Code, Sparkles, Layers, Terminal } from 'lucide-react';
 import ProjectModal from './ProjectModal';
-import algosolveoImg from '../../public/assets/algosolveo.png';
-import birdsAiImg from '../../public/assets/birds-ai.png';
-import ragSummarizerImg from '../../public/assets/rag-summarizer.png';
-import collegeChatbotImg from '../../public/assets/college-chatbot.png';
+import algosolveoImg from '../assets/algosolveo.png';
+import birdsAiImg from '../assets/birds-ai.png';
+import ragSummarizerImg from '../assets/rag-summarizer.png';
+import collegeChatbotImg from '../assets/college-chatbot.png';
 
 export default function Projects3D() {
   const [selectedProject, setSelectedProject] = useState(null);

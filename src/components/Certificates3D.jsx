@@ -1,13 +1,11 @@
 import React from 'react';
 import { Award, ExternalLink, FileText, CheckCircle, Sparkles } from 'lucide-react';
-import ijertImg from '../../public/certificates/ijert-research-paper.png';
-import salesforceImg from '../../public/certificates/salesforce-agentforce.png';
+import ijertImg from '../assets/ijert-research-paper.png';
+import salesforceImg from '../assets/salesforce-agentforce.png';
+import ijertPdf from '../assets/ijert-research-paper.pdf';
+import salesforcePdf from '../assets/salesforce-agentforce.pdf';
 
 export default function Certificates3D() {
-  const getAssetPath = (filename) => {
-    return import.meta.env.BASE_URL + filename;
-  };
-
   const items = [
     {
       id: 'ijert-paper',
@@ -17,7 +15,7 @@ export default function Certificates3D() {
       volume: 'Volume 15, Issue 06, June 2026',
       desc: 'Official research paper publication detailing an AI document summarization system integrating Retrieval-Augmented Generation (RAG), FAISS vector embeddings, and local Ollama LLMs.',
       image: ijertImg,
-      pdfUrl: getAssetPath('certificates/ijert-research-paper.pdf'),
+      pdfUrl: ijertPdf,
       badge: 'IJERT International Journal',
       highlights: [
         'Retrieval-Augmented Generation (RAG) Architecture',
@@ -33,7 +31,7 @@ export default function Certificates3D() {
       volume: 'Salesforce Agentforce Specialist',
       desc: 'Professional certification validating expertise in building autonomous AI agents, prompt engineering, CRM integrations, and Salesforce Agentforce AI workflows.',
       image: salesforceImg,
-      pdfUrl: getAssetPath('certificates/salesforce-agentforce.pdf'),
+      pdfUrl: salesforcePdf,
       badge: 'Salesforce Certified',
       highlights: [
         'Autonomous AI Agent Architecture & Workflows',

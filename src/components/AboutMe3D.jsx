@@ -1,6 +1,6 @@
 import React from 'react';
 import { User, Brain, Award, Sparkles, Code, MapPin, Mail, BookOpen } from 'lucide-react';
-import profileImg from '../../public/profile.jpg';
+import profileImg from '../assets/profile.jpg';
 
 export default function AboutMe3D() {
   return (

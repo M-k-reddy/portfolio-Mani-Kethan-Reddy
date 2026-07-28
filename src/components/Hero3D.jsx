@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import * as THREE from 'three';
 import { ArrowRight, Code, Brain, Mail, Sparkles, FileText } from 'lucide-react';
-import profileImg from '../../public/profile.jpg';
+import profileImg from '../assets/profile.jpg';
 
 export default function Hero3D() {
   const mountRef = useRef(null);

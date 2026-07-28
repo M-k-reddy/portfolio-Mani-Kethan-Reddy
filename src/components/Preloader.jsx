@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import profileImg from '../../public/profile.jpg';
+import profileImg from '../assets/profile.jpg';
 
 export default function Preloader({ onComplete }) {
   const [isLoading, setIsLoading] = useState(true);
