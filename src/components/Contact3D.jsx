@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Mail, Send, Copy, Check, Github, Linkedin, MapPin } from 'lucide-react';
+import profileImg from '../assets/profile.jpg';
 
 export default function Contact3D() {
   const [formData, setFormData] = useState({ name: '', email: '', subject: '', message: '' });
@@ -56,7 +57,7 @@ export default function Contact3D() {
               {/* Profile Photo Header */}
               <div style={{ display: 'flex', alignItems: 'center', gap: '16px', marginBottom: '20px' }}>
                 <img
-                  src="/profile.jpg"
+                  src={profileImg}
                   alt="Mani Kethan Reddy"
                   style={{
                     width: '64px',
